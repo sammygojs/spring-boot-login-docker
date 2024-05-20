@@ -119,10 +119,11 @@ return new BCryptPasswordEncoder();
 So, removed the Bean code from main file as this was written.
 
 8. Downloading Docker Desktop abd adding docker-compose.yml at root
+
 version: '3.8'
 
 services:
-mongodb:
+mongo:
 image: mongo:latest
 container_name: mongo
 ports:
@@ -130,8 +131,46 @@ ports:
 volumes:
 - mongo-data:/data/db
 
+app:
+build: .
+container_name: spring-boot-app
+ports:
+- 8080:8080
+depends_on:
+- mongo
+environment:
+SPRING_DATA_MONGODB_URI: mongodb://mongo:27017/login_db
+
 volumes:
 mongo-data:
+
+9. as the project is in gradle, we run the command to create a .jar for spring app
+
+gradlew clean build
+
+10. Create Dockerfile and add instructions
+
+[//]: # (# Use a base image with OpenJDK 17)
+FROM openjdk:17-jdk-slim
+
+[//]: # (# Set the working directory)
+WORKDIR /app
+
+[//]: # (# Copy the built jar file from the build/libs directory to the container)
+COPY build/libs/spring-boot-login-docker-0.0.1-SNAPSHOT.jar app.jar
+
+[//]: # (# Expose the port the application will run on)
+EXPOSE 8080
+
+[//]: # (# Command to run the application)
+ENTRYPOINT ["java", "-jar", "app.jar"]
+
+10. Run Docker command 
+
+docker-compose up --build
+
+
+
 
 
 
