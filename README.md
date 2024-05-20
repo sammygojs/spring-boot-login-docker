@@ -118,4 +118,20 @@ return new BCryptPasswordEncoder();
 
 So, removed the Bean code from main file as this was written.
 
+8. Downloading Docker Desktop abd adding docker-compose.yml at root
+version: '3.8'
+
+services:
+mongodb:
+image: mongo:latest
+container_name: mongo
+ports:
+- 27017:27017
+volumes:
+- mongo-data:/data/db
+
+volumes:
+mongo-data:
+
+
 
