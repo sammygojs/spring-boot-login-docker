@@ -102,4 +102,20 @@ public class AuthController {
     }
 }
 
+7. Adding SecurityConfig in config pkg
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+@Configuration
+public class SecurityConfig {
+@Bean
+public BCryptPasswordEncoder bCryptPasswordEncoder() {
+return new BCryptPasswordEncoder();
+}
+}
+
+So, removed the Bean code from main file as this was written.
+
 

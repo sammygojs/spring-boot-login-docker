@@ -11,8 +11,8 @@ public class SpringBootLoginDockerApplication {
     public static void main(String[] args) {
         SpringApplication.run(SpringBootLoginDockerApplication.class, args);
     }
-    @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+//    @Bean
+//    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
 }
