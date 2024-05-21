@@ -20,11 +20,8 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public User loginUser(String email, String password) {
+    public boolean loginUser(String email, String password) {
         User user = userRepository.findByEmail(email);
-        if (user != null && passwordEncoder.matches(password, user.getPassword())) {
-            return user;
-        }
-        return null;
+        return user != null && passwordEncoder.matches(password, user.getPassword());
     }
 }

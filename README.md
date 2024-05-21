@@ -169,6 +169,12 @@ ENTRYPOINT ["java", "-jar", "app.jar"]
 
 docker-compose up --build
 
+11. Returning 200 OK if credentials are same. Add following in UserService and AuthController
+
+Check commit
+
+note: _class is automatically created in mongo, it is for dequery purposes.
+
 
 
 
