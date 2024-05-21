@@ -175,8 +175,14 @@ Check commit
 
 note: _class is automatically created in mongo, it is for dequery purposes.
 
+12.
+implementation 'io.jsonwebtoken:jjwt:0.9.1' in build.gradle
+
+gradlew build --refresh-dependencies
 
 
+13. Adding protected endpoint
 
+14. 
 
 
